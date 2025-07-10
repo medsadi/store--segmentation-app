@@ -712,24 +712,29 @@ if st.session_state.df is not None:
         st.pyplot(fig)
         st.subheader("📋 Plan d'Action Global - 12 Mois")
         st.markdown("""
-        ### 🎯 Priorités Stratégiques
-        **Phase 1 (Mois 1-3): Diagnostic et Stabilisation**
-        - Audit approfondi des magasins défaillants
-        - Mise en place des KPIs de suivi
-        - Formation intensive des équipes
-        **Phase 2 (Mois 4-6): Optimisation**
-        - Déploiement des actions correctives
-        - Amélioration des magasins standards
-        - Réplication du modèle compact
-        **Phase 3 (Mois 7-9): Expansion**
-        - Ouverture de nouveaux points de vente
-        - Développement des services premium
-        - Partenariats stratégiques
-        **Phase 4 (Mois 10-12): Consolidation**
-        - Évaluation des résultats
-        - Ajustements stratégiques
-        - Planification annuelle suivante
-        """)
+
+### 🎯 Priorités Stratégiques
+
+**Phase 1 (Mois 1-3): Diagnostic et Stabilisation**
+- Audit approfondi des magasins défaillants
+- Mise en place des KPIs de suivi
+- Formation intensive des équipes
+
+**Phase 2 (Mois 4-6): Optimisation**
+- Déploiement des actions correctives
+- Amélioration des magasins standards
+- Réplication du modèle compact
+
+**Phase 3 (Mois 7-9): Expansion**
+- Ouverture de nouveaux points de vente
+- Développement des services premium
+- Partenariats stratégiques
+
+**Phase 4 (Mois 10-12): Consolidation**
+- Évaluation des résultats
+- Ajustements stratégiques
+- Planification annuelle suivante
+""")
         st.subheader("💰 Estimation du ROI par Segment")
         roi_data = {
             'Segment': ['Premium', 'Standards', 'Compacts', 'Défaillants'],
