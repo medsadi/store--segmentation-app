@@ -349,6 +349,7 @@ if st.session_state.df is not None:
         df_clustering = st.session_state.df[variables_clustering].copy()
         scaler = StandardScaler()
         df_scaled = scaler.fit_transform(df_clustering)
+        st.session_state.scaler = scaler  # Save scaler to session state
         st.subheader("Application de K-Means avec k=4")
         optimal_k = 4
         kmeans = KMeans(n_clusters=optimal_k, random_state=42, n_init=10)
@@ -440,6 +441,13 @@ if st.session_state.df is not None:
 
     elif section == "5. Analyse des segments":
         st.title("5. Analyse Détaillée des Segments")
+        
+        # Check if clustering has been performed
+        if st.session_state.df_with_clusters is None:
+            st.error("⚠️ Veuillez d'abord exécuter la section 'Clustering K-Means' pour voir l'analyse des segments.")
+            st.info("La section 'Clustering K-Means' doit être exécutée pour générer les segments avant de pouvoir analyser les segments.")
+            return
+            
         df_with_clusters = st.session_state.df_with_clusters
         st.subheader("Profil détaillé de chaque segment")
         for cluster_id in sorted(df_with_clusters['Cluster'].unique()):
@@ -551,6 +559,13 @@ if st.session_state.df is not None:
 
     elif section == "6. Recommandations stratégiques":
         st.title("6. Recommandations Stratégiques par Segment")
+        
+        # Check if clustering has been performed
+        if st.session_state.df_with_clusters is None:
+            st.error("⚠️ Veuillez d'abord exécuter la section 'Clustering K-Means' pour voir les recommandations.")
+            st.info("La section 'Clustering K-Means' doit être exécutée pour générer les segments avant de pouvoir afficher les recommandations stratégiques.")
+            return
+            
         df_with_clusters = st.session_state.df_with_clusters
         cluster_profiles = {
             0: {'name': 'Magasins Premium', 'description': 'Grands formats à forte performance', 'color': '#2E8B57'},
@@ -846,7 +861,7 @@ if st.session_state.df is not None:
     new_surface = st.sidebar.number_input("Surface (m²):", min_value=100, max_value=1500, value=400)
     new_employes = st.sidebar.number_input("Employés:", min_value=3, max_value=50, value=15)
     if st.sidebar.button("Prédire le segment"):
-        if st.session_state.kmeans is not None:
+        if st.session_state.kmeans is not None and st.session_state.scaler is not None:
             new_data = np.array([[new_ca, new_clients, new_surface, new_employes]])
             new_data_scaled = st.session_state.scaler.transform(new_data)
             predicted_cluster = st.session_state.kmeans.predict(new_data_scaled)[0]
@@ -872,7 +887,7 @@ if st.session_state.df is not None:
             else:
                 st.sidebar.write("⚠️ Attention! Risque de sous-performance.")
         else:
-            st.sidebar.error("Veuillez d'abord exécuter la section 'Clustering K-Means'.")
+            st.sidebar.error("Veuillez d'abord exécuter la section 'Clustering K-Means' pour pouvoir faire des prédictions.")
 
     # Generate report
     if st.sidebar.button("📄 Générer le Rapport Complet"):
@@ -951,3 +966,4 @@ La segmentation, renforcée par la visualisation PCA, révèle un potentiel d'op
 
 else:
     st.warning("Veuillez uploader le fichier 'magasins_distribution (1).xlsx' pour commencer.")
+    
