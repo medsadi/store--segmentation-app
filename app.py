@@ -452,7 +452,7 @@ if st.session_state.df is not None:
         st.subheader("Profil détaillé de chaque segment")
         for cluster_id in sorted(df_with_clusters['Cluster'].unique()):
             cluster_data = df_with_clusters[df_with_clusters['Cluster'] == cluster_id]
-            st.markdown(f"### 🏪 Cluster {cluster_id}")
+            st.markdown(f"\n### 🏪 Cluster {cluster_id}")
             st.write(f"- **Nombre de magasins**: {len(cluster_data)}")
             st.write(f"- **CA moyen (DH)**: {cluster_data['CA_DH'].mean():,.0f}")
             st.write(f"- **Clients/jour moyen**: {cluster_data['Clients_Jour'].mean():.0f}")
@@ -590,72 +590,88 @@ if st.session_state.df is not None:
             st.write(f"- **Employés**: {cluster_data['Employes'].mean():.0f}")
             if cluster_id == 0:
                 st.markdown("""
-                **🎯 Stratégies recommandées:**
-                **1. Fidélisation Premium**
-                - Programme de fidélité VIP
-                - Services personnalisés et concierge
-                - Événements exclusifs et avant-premières
-                **2. Expansion et Réplication**
-                - Identification de nouveaux emplacements similaires
-                - Transfert des bonnes pratiques vers autres segments
-                - Investissement dans l'innovation et les technologies
-                **3. Optimisation Continue**
-                - Monitoring des KPIs en temps réel
-                - Formation continue du personnel
-                - Amélioration de l'expérience client
-                **💰 Budget alloué:** 40% des investissements
-                """)
+\n**🎯 Stratégies recommandées:**
+
+**1. Fidélisation Premium**
+- Programme de fidélité VIP
+- Services personnalisés et concierge
+- Événements exclusifs et avant-premières
+
+**2. Expansion et Réplication**
+- Identification de nouveaux emplacements similaires
+- Transfert des bonnes pratiques vers autres segments
+- Investissement dans l'innovation et les technologies
+
+**3. Optimisation Continue**
+- Monitoring des KPIs en temps réel
+- Formation continue du personnel
+- Amélioration de l'expérience client
+
+**💰 Budget alloué:** 40% des investissements
+""")
             elif cluster_id == 1:
                 st.markdown("""
-                **🎯 Stratégies recommandées:**
-                **1. Optimisation Opérationnelle**
-                - Audit des processus internes
-                - Amélioration de la productivité
-                - Formation du personnel sur les techniques de vente
-                **2. Marketing Ciblé**
-                - Campagnes promotionnelles locales
-                - Partenariats avec entreprises locales
-                - Amélioration de la visibilité digitale
-                **3. Réaménagement Stratégique**
-                - Optimisation de l'agencement
-                - Amélioration de l'éclairage et de l'ambiance
-                - Diversification de l'offre produits
-                **💰 Budget alloué:** 35% des investissements
-                """)
+\n**🎯 Stratégies recommandées:**
+
+**1. Optimisation Opérationnelle**
+- Audit des processus internes
+- Amélioration de la productivité
+- Formation du personnel sur les techniques de vente
+
+**2. Marketing Ciblé**
+- Campagnes promotionnelles locales
+- Partenariats avec entreprises locales
+- Amélioration de la visibilité digitale
+
+**3. Réaménagement Stratégique**
+- Optimisation de l'agencement
+- Amélioration de l'éclairage et de l'ambiance
+- Diversification de l'offre produits
+
+**💰 Budget alloué:** 35% des investissements
+""")
             elif cluster_id == 2:
                 st.markdown("""
-                **🎯 Stratégies recommandées:**
-                **1. Réplication du Modèle**
-                - Analyse approfondie des facteurs de succès
-                - Documentation des processus optimisés
-                - Déploiement dans d'autres zones similaires
-                **2. Maximisation de l'Efficacité**
-                - Optimisation continue des stocks
-                - Automatisation des processus
-                - Formation sur la polyvalence
-                **3. Expansion Contrôlée**
-                - Ouverture de points de vente similaires
-                - Partenariats avec franchisés
-                - Développement de services complémentaires
-                **💰 Budget alloué:** 20% des investissements
-                """)
+\n**🎯 Stratégies recommandées:**
+
+**1. Réplication du Modèle**
+- Analyse approfondie des facteurs de succès
+- Documentation des processus optimisés
+- Déploiement dans d'autres zones similaires
+
+**2. Maximisation de l'Efficacité**
+- Optimisation continue des stocks
+- Automatisation des processus
+- Formation sur la polyvalence
+
+**3. Expansion Contrôlée**
+- Ouverture de points de vente similaires
+- Partenariats avec franchisés
+- Développement de services complémentaires
+
+**💰 Budget alloué:** 20% des investissements
+""")
             else:
                 st.markdown("""
-                **🎯 Stratégies recommandées:**
-                **1. Plan de Redressement Urgent**
-                - Audit complet des performances
-                - Révision de la stratégie locale
-                - Renforcement de l'équipe managériale
-                **2. Restructuration Opérationnelle**
-                - Optimisation des coûts
-                - Renégociation des contrats
-                - Amélioration des processus
-                **3. Décision Stratégique**
-                - Évaluation du potentiel de redressement
-                - Envisager la fermeture si non viable
-                - Reconversion ou relocisation si nécessaire
-                **💰 Budget alloué:** 5% des investissements
-                """)
+\n**🎯 Stratégies recommandées:**
+
+**1. Plan de Redressement Urgent**
+- Audit complet des performances
+- Révision de la stratégie locale
+- Renforcement de l'équipe managériale
+
+**2. Restructuration Opérationnelle**
+- Optimisation des coûts
+- Renégociation des contrats
+- Amélioration des processus
+
+**3. Décision Stratégique**
+- Évaluation du potentiel de redressement
+- Envisager la fermeture si non viable
+- Reconversion ou relocisation si nécessaire
+
+**💰 Budget alloué:** 5% des investissements
+""")
             st.markdown("---")
         st.subheader("🎯 Tableau de Bord Stratégique")
         total_ca = df_with_clusters['CA_DH'].sum()
