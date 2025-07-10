@@ -507,24 +507,29 @@ if st.session_state.df is not None:
         st.write(performance_df.round(0))
         st.subheader("🎯 Synthèse Stratégique des Segments")
         st.markdown("""
-        **Typologie des segments identifiés:**
-        **🏆 Segment Premium (Cluster 0):**
-        - Magasins leaders en CA et surface
-        - Forte dotation en personnel
-        - Modèle à préserver et développer
-        **📊 Segment Standard (Cluster 1):**
-        - Performance équilibrée
-        - Potentiel d'optimisation significatif
-        - Cible prioritaire pour l'amélioration
-        **🎯 Segment Compact (Cluster 2):**
-        - Efficacité remarquable (CA/surface)
-        - Modèle lean à répliquer
-        - Opportunité d'expansion
-        **⚠️ Segment Défaillant (Cluster 3):**
-        - Sous-performance généralisée
-        - Restructuration urgente nécessaire
-        - Risque de fermeture si non traité
-        """)
+
+**Typologie des segments identifiés:**
+
+**🏆 Segment Premium (Cluster 0):**
+- Magasins leaders en CA et surface
+- Forte dotation en personnel
+- Modèle à préserver et développer
+
+**📊 Segment Standard (Cluster 1):**
+- Performance équilibrée
+- Potentiel d'optimisation significatif
+- Cible prioritaire pour l'amélioration
+
+**🎯 Segment Compact (Cluster 2):**
+- Efficacité remarquable (CA/surface)
+- Modèle lean à répliquer
+- Opportunité d'expansion
+
+**⚠️ Segment Défaillant (Cluster 3):**
+- Sous-performance généralisée
+- Restructuration urgente nécessaire
+- Risque de fermeture si non traité
+""")
         st.subheader("🧪 Quiz Interactif - Analyse des Segments")
         quiz_output = st.empty()
         questions = [
