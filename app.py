@@ -446,7 +446,7 @@ if st.session_state.df is not None:
         if st.session_state.df_with_clusters is None:
             st.error("⚠️ Veuillez d'abord exécuter la section 'Clustering K-Means' pour voir l'analyse des segments.")
             st.info("La section 'Clustering K-Means' doit être exécutée pour générer les segments avant de pouvoir analyser les segments.")
-            return
+            st.stop()
             
         df_with_clusters = st.session_state.df_with_clusters
         st.subheader("Profil détaillé de chaque segment")
@@ -564,7 +564,7 @@ if st.session_state.df is not None:
         if st.session_state.df_with_clusters is None:
             st.error("⚠️ Veuillez d'abord exécuter la section 'Clustering K-Means' pour voir les recommandations.")
             st.info("La section 'Clustering K-Means' doit être exécutée pour générer les segments avant de pouvoir afficher les recommandations stratégiques.")
-            return
+            st.stop()
             
         df_with_clusters = st.session_state.df_with_clusters
         cluster_profiles = {
